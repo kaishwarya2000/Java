@@ -6,4 +6,71 @@ Example 1: Employee, Contractor, and FullTimeEmployee Example
 
 In this example, we create an abstract Employee class and which contains the abstract calculateSalary() method. Let the subclasses extend the Employee class and implement a calculateSalary() method.
 
-Let's create Contractor and FullTimeEmployee classes as we know that the salary structure for a contractor and full-time employees are different so let these classes override and implement a calculateSalary() method.
+step1: Let's create Contractor and FullTimeEmployee classes as we know that the salary structure for a contractor and full-time employees are different so let these classes override and implement a calculateSalary() method.
+
+public abstract class Employee {
+
+    private String name;
+    private int paymentPerHour;
+
+    public Employee(String name, int paymentPerHour) {
+        this.name = name;
+        this.paymentPerHour = paymentPerHour;
+    }
+
+    public abstract int calculateSalary();
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getPaymentPerHour() {
+        return paymentPerHour;
+    }
+    public void setPaymentPerHour(int paymentPerHour) {
+        this.paymentPerHour = paymentPerHour;
+    }
+}
+
+Step2: The Contractor class inherits all properties from its parent abstract Employee class but has to provide its own implementation to calculateSalary() method. In this case, we multiply the value of payment per hour with given working hours.
+
+public class Contractor extends Employee {
+
+    private int workingHours;
+    public Contractor(String name, int paymentPerHour, int workingHours) {
+        super(name, paymentPerHour);
+        this.workingHours = workingHours;
+    }
+    @Override
+    public int calculateSalary() {
+        return getPaymentPerHour() * workingHours;
+    }
+}
+
+Step 3: The FullTimeEmployee also has its own implementation of calculateSalary() method. In this case, we just multiply by a constant value of 8 hours.
+
+public class FullTimeEmployee extends Employee {
+    public FullTimeEmployee(String name, int paymentPerHour) {
+        super(name, paymentPerHour);
+    }
+    @Override
+    public int calculateSalary() {
+        return getPaymentPerHour() * 8;
+    }
+}
+
+Step 4: Let's create an AbstractionDemo class to test implementation of Abstraction with the below code:
+
+public class AbstractionDemo {
+
+    public static void main(String[] args) {
+
+        Employee contractor = new Contractor("contractor", 10, 10);
+        Employee fullTimeEmployee = new FullTimeEmployee("full time employee", 8);
+        System.out.println(contractor.calculateSalary());
+        System.out.println(fullTimeEmployee.calculateSalary());
+    }
+}
+
+
