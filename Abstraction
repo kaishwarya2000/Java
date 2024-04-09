@@ -1,0 +1,9 @@
+we say that an object should expose to the users only a set of high-level; operations, while the internal implementation of those operations is hidden.
+Abstraction is achieved in Java via abstract classes and interfaces
+We can achieve 100% abstraction using Interfaces.
+
+Example 1: Employee, Contractor, and FullTimeEmployee Example 
+
+In this example, we create an abstract Employee class and which contains the abstract calculateSalary() method. Let the subclasses extend the Employee class and implement a calculateSalary() method.
+
+Let's create Contractor and FullTimeEmployee classes as we know that the salary structure for a contractor and full-time employees are different so let these classes override and implement a calculateSalary() method.
