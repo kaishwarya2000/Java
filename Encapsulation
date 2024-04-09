@@ -1,0 +1,102 @@
+Encapsulation refers to combining data and associated functions as a single unit. In OOP, data and functions operating on that data are combined together to form a single unit, which is referred to as a class.
+
+Data hiding: When each object keeps its state private inside a class
+
+Advantages of encapsulation:
+1.  loosely coupled, reusable, secure, and easy to test code.
+2. secure the data from other methods. 
+
+-> encapsulation is implemented via the access modifiers - public, private, and protected.
+
+Note: A Java Class is an example of encapsulation. Java bean is the fully encapsulated class because all the data members are private here.
+
+Example:
+a Cat class can have its state represented by fields such as mood, hungry and energy. While the code external to the Cat class cannot modify any of these fields directly, it can call public methods play(), feed(), and sleep() that modify the Cat state internally.
+-> The Cat class may also have private methods that are not accessible outside the class, such as meow(). This is encapsulation.
+
+public class Cat {
+
+    private int mood = 50;
+    private int hungry = 50;
+    private int energy = 50;
+
+    public void sleep() {
+        System.out.println("Sleep ...");
+        energy++;
+        hungry++;
+    }
+
+    public void play() {
+        System.out.println("Play ...");
+        mood++;
+        energy--;
+        meow();
+    }
+
+    public void feed() {
+        System.out.println("Feed ...");
+        hungry--;
+        mood++;
+        meow();
+    }
+
+    private void meow() {
+        System.out.println("Meow!");
+    }
+
+    public int getMood() {
+        return mood;
+    }
+
+    public int getHungry() {
+        return hungry;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+}
+
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Cat cat = new Cat();
+        
+        cat.feed();
+        cat.play();
+        cat.feed();
+        cat.sleep();
+        
+        System.out.println("Energy: " + cat.getEnergy());
+        System.out.println("Mood: " + cat.getMood());
+        System.out.println("Hungry: " + cat.getHungry());
+    }
+}
+
+The output will be as follows:
+
+Feed ...
+Meow!
+Play ...
+Meow!
+Feed ...
+Meow!
+Sleep ...
+Energy: 50
+Mood: 53
+Hungry: 49
+
+Note:
+-> Encapsulation: Information hiding.
+-> Abstraction: Implementation hiding.
+
+Note:
+Difference between Abstraction and Encapsulation:
+1. Abstraction and Encapsulation in Java are two important Object-oriented programming concepts and they are completely different from each other.
+2. Encapsulation is a process of binding or wrapping the data and the codes that operate on the data into a single entity. This keeps the data safe from outside interface and misuse.
+3. Abstraction is the concept of hiding irrelevant details. In other words, make the complex system simple by hiding unnecessary detail from the user.
+4. Abstraction is implemented in Java using an interface and abstract class while Encapsulation is implemented using private, package-private, and protected access modifiers.
+5. Abstraction solves the problem at the design level. Whereas Encapsulation solves the problem at the implementation level.
