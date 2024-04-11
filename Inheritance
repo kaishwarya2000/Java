@@ -1,0 +1,81 @@
+-> Inheritance - IS-A relationship between a superclass and its subclass
+
+Super Class: The class whose features are inherited is known as a superclass (or a base class or a parent class).
+Sub Class: The class that inherits the other class is known as a subclass(or a derived class, extended class, or child class). The subclass can add its own fields and methods in addition to the superclass fields and methods.
+
+When we say that class B is inherited from another class A, then class B is referred to as a subclass (or derived class) and class A is called superclass (or base class).
+
+-> The Number class abstracts various numerical (reference) types such as Byte, Integer, Float, Double, Short, and BigDecimal. Number classbelongs to Object class
+java.lang library
+
+Example:
+
+public class Inheritance {
+
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.setId(123); // inherited from super class
+        dog.sound(); // overrided behavior of sub class
+    }
+}
+
+/**
+ * This is parent (also called as super or base) class Animal
+ *  
+ */
+class Animal {
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void sound() {
+        System.out.println("By default it is mute");
+    }
+}
+
+/**
+ * This is subclass (also called as derived or child or extended) Dog which is extending Animal
+ * 
+ */
+class Dog extends Animal {
+ 
+    // Own behavior
+    private void bark() {
+        System.out.println("Dog '" + getId() + "' is barking");
+    }
+
+    // Overriding super class behavior
+    @Override
+    public void sound() {
+        bark();
+    }
+}
+
+class derived-class extends base-class  
+{  
+   //methods and fields  
+} 
+
+
+Example 2: In this example, the Programmer is the subclass and the Employee is the superclass. The relationship between the two classes is the Programmer IS-A Employee. It means that a Programmer is a type of Employee.
+
+class Employee{  
+    float salary=40000;  
+}  
+class Programmer extends Employee{  
+    int bonus=10000;  
+    public static void main(String args[]){  
+        Programmer p=new Programmer();  
+        System.out.println("Programmer salary is:"+p.salary);  
+        System.out.println("Bonus of Programmer is:"+p.bonus);  
+    }  
+}  
+
+
+
